@@ -7,7 +7,7 @@ ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_
          [-O ctl_cmd] [-o option] [-p port] [-Q query_option] [-R address] [-S ctl_path]
          [-W host:port] [-w local_tun[:remote_tun]] destination [command]
 ``` 
-### Steps to setup SSH connection
+## Setup SSH connection between host and virtualbox
 ### Virtualbox
 - install openssh-server
 ### Host
@@ -33,7 +33,7 @@ ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_
 #### Reload
 ```sudo systemctl reload sshd.service```
 
-### Copy files to/from
+## Copy files to/from
 #### single file to
 ```scp myfile.txt kosint@127.0.0.1:/remote/folder/```
 #### * files to
@@ -43,7 +43,7 @@ ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_
 #### * files from 
 ```scp -r * kosint@127.0.0.1:/remote/folder/```
 
-### Use SSH to Create an HTTP Proxy
+## Use SSH to Create an HTTP Proxy
 #### client side
 ```ssh -D 8123 -f -C -q -N kosint@127.0.0.1```
 ##### flags:
@@ -61,7 +61,7 @@ ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_
 					- →Settings and specify that you want to use a Manual Proxy, localhost, port 12345 and SOCKS v5
 
 
-### Use GUI programs from ssh
+## Use GUI programs from ssh
 #### x11 
 from windows you need to have installed xming. 
 ```ssh -XC kosint@127.0.0.1 -p 2222```
