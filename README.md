@@ -1,4 +1,4 @@
-# Ssh
+# SSH
 SSH keys provide a secure way of logging into a Linux on the cloud or virtual machine on prem. 
 ```  bash
 ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_spec]
