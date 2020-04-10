@@ -17,6 +17,14 @@ ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_
 ### Store the Keys and Passphrase    
 - The ***public key*** is now located in /.ssh/id_rsa.pub. ***the one you send out***
 - The ***private key*** (identification) is now located in /.ssh/id_rsa. 
+
+### locate the ssh key
+#### Windows
+```C:\Users\[your user name]\.ssh```
+#### Linux 
+```~/.ssh
+```
+or use the command ```locate```
 ### Copy the Public Key
 #### from linux host
 ``` cat ~/.ssh/id_rsa.pub | ssh kosint@127.0.0.1 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"```
