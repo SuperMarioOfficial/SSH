@@ -20,9 +20,12 @@ ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_
 
 ### locate the ssh key
 #### Windows
-```C:\Users\[your user name]\.ssh```
+```
+C:\Users\[your user name]\.ssh
+```
 #### Linux 
-```~/.ssh
+```
+~/.ssh
 ```
 or use the command ```locate```
 ### Copy the Public Key
