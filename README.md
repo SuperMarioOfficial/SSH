@@ -7,6 +7,9 @@ apt-get install openssh-server
 apt-get install openssh-client
 systemctl enable ssh
 systemctl enable ssh.service
+apt-get install openssh-server
+update-rc.d ssh defaults
+systemctl enable ssh.socket
 ```
 
 ## SSH options
