@@ -1,4 +1,15 @@
 # SSH
+## Instal ssh client and server 
+
+```bash
+apt-get -y -qq update  --fix-missing 
+apt-get install openssh-server
+apt-get install openssh-client
+systemctl enable ssh
+systemctl enable ssh.service
+```
+
+## SSH options
 SSH keys provide a secure way of logging into a Linux on the cloud or virtual machine on prem. 
 ```  bash
 ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_spec]
@@ -7,18 +18,13 @@ ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address] [-c cipher_
          [-O ctl_cmd] [-o option] [-p port] [-Q query_option] [-R address] [-S ctl_path]
          [-W host:port] [-w local_tun[:remote_tun]] destination [command]
 ``` 
-## Setup SSH connection between host and virtualbox
-### Virtualbox
-- install openssh-server
-### Host
-- install openssh-client
-### Create the RSA Key Pair
+## Create the RSA Key Pair
 ```ssh-keygen -t rsa```
-### Store the Keys and Passphrase    
+## Store the Keys and Passphrase    
 - The ***public key*** is now located in /.ssh/id_rsa.pub. ***the one you send out***
 - The ***private key*** (identification) is now located in /.ssh/id_rsa. 
 
-### locate the ssh key
+## locate the ssh key
 #### Windows
 ```
 C:\Users\[your user name]\.ssh
@@ -28,10 +34,10 @@ C:\Users\[your user name]\.ssh
 ~/.ssh
 ```
 or use the command ```locate```
-### Copy the Public Key
-#### from linux host
+## Copy the Public Key
+### from linux host
 ``` cat ~/.ssh/id_rsa.pub | ssh kosint@127.0.0.1 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"```
-#### from windows host
+### from windows host
 #### copy the key into a tmp file
 ``` scp -P 2222 id_rsa.pub kosint@127.0.0.1:/tmp/id_rsa.pub```
 ##### append the key into the authorized keys
@@ -45,17 +51,17 @@ or use the command ```locate```
 ```sudo systemctl reload sshd.service```
 
 ## Copy files to/from
-#### single file to
+### single file to
 ```scp myfile.txt kosint@127.0.0.1:/remote/folder/```
-#### * files to
+### * files to
 ```scp -r * kosint@127.0.0.1:/remote/folder/```
-#### single file from 
+### single file from 
 ```scp kosint@127.0.0.1:/remote/folder/myfile.txt  myfile.txt```
-#### * files from 
+### * files from 
 ```scp -r * kosint@127.0.0.1:/remote/folder/```
 
 ## Use SSH to Create an HTTP Proxy
-#### client side
+### client side
 ```ssh -D 8123 -f -C -q -N kosint@127.0.0.1```
 ##### flags:
 - D: Tells SSH that we want a SOCKS tunnel on the specified port number (you can choose a number between 1025-65536)
@@ -63,7 +69,7 @@ or use the command ```locate```
 - C: Compresses the data before sending it
 - q: Uses quiet mode
 - N: Tells SSH that no command will be sent once the tunnel is up
-##### Configure Firefox
+### Configure Firefox
 - Open Firefox, 
 	- go to Edit
 		- →Preferences
@@ -73,14 +79,13 @@ or use the command ```locate```
 
 
 ## Use GUI programs from ssh
-#### x11 
+### x11 
 from windows you need to have installed xming. 
 ```ssh -XC kosint@127.0.0.1 -p 2222```
-
-#### firefox
+### firefox
 ```firefox &```
 
-### Reference
+## Reference
 - [how-to-set-up-ssh-keys-on-linux-unix?](https://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/)
 - [how-to-set-up-ssh-keys](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
 - [how-to-copy-files-using-ssh](https://www.simplified.guide/ssh/copy-file)
